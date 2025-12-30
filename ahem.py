@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime
+from datetime import datetime, timedelta
 from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(page_title="Marauder's Map ⚡", page_icon="🪄", layout="centered")
@@ -95,8 +95,12 @@ st.markdown("<p style='text-align:center; color:#D4AF37; font-size:16px; font-fa
 # ---------- COUNTDOWN TO MAGICAL EVENT ----------
 st.markdown("<h2>🕛 Countdown to Midnight Mischief</h2>", unsafe_allow_html=True)
 
-now = datetime.now()
-target = datetime(now.year + 1, 1, 1, 0, 0, 0)
+# Get IST (UTC + 5:30)
+now = datetime.utcnow() + timedelta(hours=5, minutes=30)
+
+# Target = Jan 1 2026 00:00:00 IST
+target = datetime(2026, 1, 1, 0, 0, 0)
+
 remaining = target - now
 seconds = int(remaining.total_seconds())
 
@@ -110,10 +114,14 @@ if seconds <= 0:
         st.session_state.spell_cast_balloons = True
 
 else:
-    hrs = seconds // 3600
+    days = seconds // 86400
+    hrs = (seconds % 86400) // 3600
     mins = (seconds % 3600) // 60
     secs = seconds % 60
-    st.markdown(f"<div class='countdown'>{hrs:02d}:{mins:02d}:{secs:02d}</div>", unsafe_allow_html=True)
+    st.markdown(
+        f"<div class='countdown'>{days}d {hrs:02d}:{mins:02d}:{secs:02d}</div>",
+        unsafe_allow_html=True
+    )
 
 st.write("")
 
