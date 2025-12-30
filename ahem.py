@@ -145,7 +145,7 @@ if secret.strip().lower() in ["mischief managed", "expelliarmus", "lumos", "wing
     <p>
     Hey this is me again, I think we had a great year and i am grateful that you were a part of it. I will always remember the support you gave me during my lowest of lows and the highest of highs.
     <br><br>
-    Here's to more adventures, laughter, and those unforgettable moments only we understand. May this year be filled with magic, wonder, and plenty of mischief! ✨
+    Here's to more adventures, laughter, and those unforgettable moments only we understand. May this year be filled with magic, wonder, and plenty of mischief, ily! ✨
     </p>
     </div>
     """, unsafe_allow_html=True)
@@ -172,3 +172,4 @@ elif secret != "":
     st.error("❌ Incorrect incantation... try another spell! 🪄")
 
 st.markdown("<div class='footer'>✨ Made with magic in Python & Streamlit | Mischief Managed ✨</div>", unsafe_allow_html=True)
+
